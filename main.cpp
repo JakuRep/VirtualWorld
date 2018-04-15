@@ -16,6 +16,7 @@ int main() {
     MyWorld.display();
     World EARTH = World(20,20);
     EARTH.addOrganism(2,2,orgPtr);
+    EARTH.killOrganism(orgPtr);
     EARTH.display();
 
     return 0;

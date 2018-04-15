@@ -32,7 +32,7 @@ Map::~Map() {
 }
 
 Organism * Map::getOrganism(int x, int y) {
-    if(isInMap(x,y))
+    if(!isInMap(x,y))
         throw outOfBoundsException();
 
     return field[x][y];
@@ -78,7 +78,9 @@ void Map::addOrganism(int x, int y, Organism * orgPtr) {
     if(!isInMap(x,y))
         throw outOfBoundsException();
     else if(isInMap(x,y) && field[x][y] == nullptr) {
-        field[x][y] = nullptr;
+        field[x][y] = orgPtr;
+        orgPtr->setX(x);
+        orgPtr->setY(y);
     }
     else
         throw fieldAlreadyTakenException();

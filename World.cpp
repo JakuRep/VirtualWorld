@@ -8,6 +8,10 @@ World::World(int width, int height) {
     GameQueue =new PriorityQueue(width*height);
     this->tour = 0;
 }
+World::~World() {
+    delete GameMap;
+    delete GameQueue;
+}
 int World::getSize() {
     return GameQueue->getSize();
 }
