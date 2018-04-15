@@ -4,7 +4,8 @@
 
 #ifndef VIRTUALWORLD_MAP_H
 #define VIRTUALWORLD_MAP_H
-#include "Organism.h"
+
+class Organism;
 class Map {
 private:
     Organism *** field;
@@ -30,6 +31,6 @@ public:
 
 
 };
-
+#include "Organism.h"
 
 #endif //VIRTUALWORLD_MAP_H

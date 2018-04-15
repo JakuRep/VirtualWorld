@@ -8,6 +8,7 @@
 #include "Map.h"
 #include "WorldExceptions.h"
 #include <iostream>
+class Organism;
 class World {
 private:
     Map *GameMap;
@@ -25,10 +26,10 @@ public:
     void killOrganism(Organism * orgPtr);
     void addOrganism(int x, int y, Organism *orgPtr);
     void display();
-
+    void makeTour();
 
 
 };
-
+#include "Organism.h"
 
 #endif //VIRTUALWORLD_WORLD_H

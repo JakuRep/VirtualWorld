@@ -103,3 +103,9 @@ Organism* PriorityQueue::getPtrAtOrder(int order) {
         return Queue[order];
     }
 }
+
+void PriorityQueue::makeTour() {
+    for(int i = 0; i < size && Queue[i] != nullptr; i++) {
+        Queue[i]->akcja();
+    }
+}

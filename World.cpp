@@ -63,3 +63,8 @@ void World::display() {
     GameMap->display();
     std::cout << "\n\n\n\n";
 }
+
+void World::makeTour() {
+    GameQueue->makeTour();
+    display();
+}

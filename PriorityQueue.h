@@ -5,9 +5,9 @@
 #ifndef VIRTUALWORLD_PRIORITYQUEUE_H
 #define VIRTUALWORLD_PRIORITYQUEUE_H
 #include "QueueExceptions.h"
-#include "Organism.h"
 
 
+class Organism;
 class PriorityQueue {
 private:
     Organism ** Queue;
@@ -22,8 +22,9 @@ public:
     void sortQueue();
     void addOrganism(Organism * orgPtr);
     void killOrganism(Organism * orgPtr);
+    void makeTour();
 
 };
-
+#include "Organism.h"
 
 #endif //VIRTUALWORLD_PRIORITYQUEUE_H
