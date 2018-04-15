@@ -27,9 +27,10 @@ public:
     void addOrganism(int x, int y, Organism *orgPtr);
     void display();
     void makeTour();
+    bool isInBound(int x, int y);
 
 
 };
-#include "Organism.h"
+
 
 #endif //VIRTUALWORLD_WORLD_H

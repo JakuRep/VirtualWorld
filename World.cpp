@@ -3,6 +3,7 @@
 //
 
 #include "World.h"
+#include "Organism.h"
 World::World(int width, int height) {
     GameMap =new Map(width, height);
     GameQueue =new PriorityQueue(width*height);
@@ -22,7 +23,7 @@ int World::getHeight() {
     return GameMap->getWidth();
 }
 Organism * World::getXY(int x, int y) {
-    return GameMap->getOrganism(x,y);
+    return (GameMap->getOrganism(x,y));
 }
 
 bool World::moveOrganism(int oldX, int oldY, int newX, int newY) {
@@ -67,4 +68,9 @@ void World::display() {
 void World::makeTour() {
     GameQueue->makeTour();
     display();
+    this->tour++;
+}
+
+bool World::isInBound(int x, int y) {
+    return GameMap->isInMap(x,y);
 }
