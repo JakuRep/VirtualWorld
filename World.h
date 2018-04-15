@@ -10,8 +10,8 @@
 #include <iostream>
 class World {
 private:
-    Map GameMap;
-    PriorityQueue GameQueue;
+    Map *GameMap;
+    PriorityQueue *GameQueue;
     int tour;
 public:
     explicit World(int width = 20, int height = 20);

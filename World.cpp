@@ -4,30 +4,30 @@
 
 #include "World.h"
 World::World(int width, int height) {
-    GameMap = Map(width, height);
-    GameQueue = PriorityQueue(width*height);
+    GameMap =new Map(width, height);
+    GameQueue =new PriorityQueue(width*height);
     this->tour = 0;
 }
 int World::getSize() {
-    return GameQueue.getSize();
+    return GameQueue->getSize();
 }
 int World::getWidth() {
-    return GameMap.getWidth();
+    return GameMap->getWidth();
 }
 int World::getHeight() {
-    return GameMap.getWidth();
+    return GameMap->getWidth();
 }
 Organism * World::getXY(int x, int y) {
-    return GameMap.getOrganism(x,y);
+    return GameMap->getOrganism(x,y);
 }
 
 bool World::moveOrganism(int oldX, int oldY, int newX, int newY) {
-    return GameMap.moveOrganism(oldX, oldY, newX, newY);
+    return GameMap->moveOrganism(oldX, oldY, newX, newY);
 }
 
 void World::addOrganism(int x, int y, Organism *orgPtr) {
-    GameMap.addOrganism(x,y,orgPtr);
-    GameQueue.addOrganism(orgPtr);
+    GameMap->addOrganism(x,y,orgPtr);
+    GameQueue->addOrganism(orgPtr);
 
 }
 
@@ -36,8 +36,8 @@ void World::killOrganism(int x, int y) {
     if(orgPtr == nullptr)
         throw noOrganismWithThisPriorityException();
     else {
-        GameMap.killOrganism(x, y);
-        GameQueue.killOrganism(orgPtr);
+        GameMap->killOrganism(x, y);
+        GameQueue->killOrganism(orgPtr);
         delete orgPtr;
     }
 }
@@ -48,14 +48,14 @@ void World::killOrganism(Organism *orgPtr) {
     if(getXY(x,y) == nullptr)
         throw noOrganismWithThisPriorityException();
     else {
-        GameMap.killOrganism(x,y);
-        GameQueue.killOrganism(orgPtr);
+        GameMap->killOrganism(x,y);
+        GameQueue->killOrganism(orgPtr);
         delete orgPtr;
     }
 }
 void World::display() {
-    GameQueue.display();
+    GameQueue->display();
     std::cout << "\n";
-    GameMap.display();
+    GameMap->display();
     std::cout << "\n\n\n\n";
 }

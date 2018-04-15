@@ -14,6 +14,9 @@ int main() {
     MyWorld.addOrganism(1,1,orgPtr);
     MyQueue.display();
     MyWorld.display();
+    World EARTH = World(20,20);
+    EARTH.addOrganism(2,2,orgPtr);
+    EARTH.display();
 
     return 0;
 }
