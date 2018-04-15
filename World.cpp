@@ -8,7 +8,6 @@ World::World(int width, int height) {
     GameQueue = PriorityQueue(width*height);
     this->tour = 0;
 }
-
 int World::getSize() {
     return GameQueue.getSize();
 }
@@ -27,9 +26,9 @@ bool World::moveOrganism(int oldX, int oldY, int newX, int newY) {
 }
 
 void World::addOrganism(int x, int y, Organism *orgPtr) {
-
-    GameQueue.addOrganism(orgPtr);
     GameMap.addOrganism(x,y,orgPtr);
+    GameQueue.addOrganism(orgPtr);
+
 }
 
 void World::killOrganism(int x, int y) {

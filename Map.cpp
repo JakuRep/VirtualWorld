@@ -78,7 +78,7 @@ void Map::addOrganism(int x, int y, Organism * orgPtr) {
     if(!isInMap(x,y))
         throw outOfBoundsException();
     else if(isInMap(x,y) && field[x][y] == nullptr) {
-        field[x][y] = orgPtr;
+        field[x][y] = nullptr;
     }
     else
         throw fieldAlreadyTakenException();

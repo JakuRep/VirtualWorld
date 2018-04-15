@@ -16,15 +16,18 @@ public:
     Organism(int priority, int age) {
         this->priority = priority;
         this->age = age;
+        this->order = 0;
+        this->x = 0;
+        this->y = 0;
     }
     int getPriority() {
-        return this->priority;
+        return priority;
     }
     int getAge() {
-        return this->age;
+        return age;
     }
     int getOrder() {
-        return this->order;
+        return order;
     }
     void setOrder(int order) {
         this->order = order;
