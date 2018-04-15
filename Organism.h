@@ -22,7 +22,7 @@ class Organism {
     World * MyWorld;
 
 public:
-    Organism(int priority, int age, World * myWorld);
+    Organism(int x=0, int y = 0,int priority=0, int age=0, World * myWorld=nullptr);
     int getPriority();
     int getAge();
     int getOrder();
@@ -31,8 +31,10 @@ public:
     void setX(int x);
     int getY();
     void setY(int y);
-    void akcja();
+    virtual void akcja() = 0;
     bool findFreeSpace(int &x, int &y);
+    char drawYourself();
+    World * getWorld();
 };
 
 

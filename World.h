@@ -20,6 +20,7 @@ public:
     int getHeight();
     int getWidth();
     int getSize();
+
     Organism * getXY(int x, int y);
     bool moveOrganism(int oldX, int oldY, int newX, int newY);
     void killOrganism(int x, int y);
@@ -28,7 +29,7 @@ public:
     void display();
     void makeTour();
     bool isInBound(int x, int y);
-
+    int getAge();
 
 };
 

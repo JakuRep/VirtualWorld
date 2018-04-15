@@ -3,12 +3,12 @@
 //
 #include "Organism.h"
 #include "World.h"
-Organism::Organism(int priority, int age, World * myWorld) {
+Organism::Organism(int x, int y, int priority, int age, World * myWorld) {
     this->priority = priority;
     this->age = age;
     this->order = 0;
-    this->x = 0;
-    this->y = 0;
+    this->x = x;
+    this->y = y;
     this->MyWorld = myWorld;
 }
 int Organism::getPriority() {
@@ -74,4 +74,12 @@ bool Organism::findFreeSpace(int &x, int &y) {
         }
         return false;
     }
+}
+
+char Organism::drawYourself() {
+    return 'O';
+}
+
+World * Organism::getWorld() {
+    return this->MyWorld;
 }

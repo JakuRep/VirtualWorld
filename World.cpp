@@ -33,7 +33,6 @@ bool World::moveOrganism(int oldX, int oldY, int newX, int newY) {
 void World::addOrganism(int x, int y, Organism *orgPtr) {
     GameMap->addOrganism(x,y,orgPtr);
     GameQueue->addOrganism(orgPtr);
-
 }
 
 void World::killOrganism(int x, int y) {
@@ -74,3 +73,7 @@ void World::makeTour() {
 bool World::isInBound(int x, int y) {
     return GameMap->isInMap(x,y);
 }
+int World::getAge() {
+    return this->tour;
+}
+
