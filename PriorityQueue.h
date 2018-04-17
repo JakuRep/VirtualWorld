@@ -12,8 +12,9 @@ class PriorityQueue {
 private:
     Organism ** Queue;
     int size;
+    int tour;
 public:
-    PriorityQueue(int size = 20*20);
+    explicit PriorityQueue(int size = 20*20);
     ~PriorityQueue();
     void display();
     Organism* getPtrAtOrder(int order);
@@ -23,6 +24,8 @@ public:
     void addOrganism(Organism * orgPtr);
     void killOrganism(Organism * orgPtr);
     void makeTour();
+    int getTour();
+
 
 };
 #include "Organism.h"

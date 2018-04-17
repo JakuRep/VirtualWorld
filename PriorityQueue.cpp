@@ -7,6 +7,7 @@
 
 PriorityQueue::PriorityQueue(int size) {
     this->size = size;
+    this->tour++;
     this->Queue = new Organism*[size];
     for(int i = 0; i < size; i++)
         Queue[i] = nullptr;
@@ -95,7 +96,6 @@ void PriorityQueue::killOrganism(Organism * orgPtr) {
         int order = orgPtr->getOrder();
         Queue[order] = nullptr;
     }
-
     sortQueue();
 }
 Organism* PriorityQueue::getPtrAtOrder(int order) {
@@ -108,6 +108,11 @@ Organism* PriorityQueue::getPtrAtOrder(int order) {
 
 void PriorityQueue::makeTour() {
     for(int i = 0; i < size && Queue[i] != nullptr; i++) {
-        Queue[i]->akcja();
+        if(Queue[i]->getAge() != tour)
+            Queue[i]->akcja();
     }
+    tour++;
+}
+int PriorityQueue::getTour() {
+    return this->tour;
 }

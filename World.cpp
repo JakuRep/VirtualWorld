@@ -7,7 +7,6 @@
 World::World(int width, int height) {
     GameMap =new Map(width, height);
     GameQueue =new PriorityQueue(width*height);
-    this->tour = 0;
 }
 World::~World() {
     delete GameMap;
@@ -67,13 +66,12 @@ void World::display() {
 void World::makeTour() {
     GameQueue->makeTour();
     display();
-    this->tour++;
 }
 
 bool World::isInBound(int x, int y) {
     return GameMap->isInMap(x,y);
 }
 int World::getAge() {
-    return this->tour;
+    return this->GameQueue->getTour();
 }
 
