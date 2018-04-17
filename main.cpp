@@ -12,13 +12,13 @@ int main() {
     srand(time(NULL));
     int x=0, y=0;
     World Earth = World(20,20);
-    Organism * orgPtr = new Plant(1, 0,1,1,&Earth);
+    Organism * orgPtr = new Plant(19, 19,1,1,&Earth);
     Organism * orgPtr1 = new Plant(0,0,1,1,&Earth);
     Organism * orgPtr2 = new Plant(0,1,1,1,&Earth);
-    Earth.addOrganism(1,0, orgPtr);
+    Earth.addOrganism(19,19, orgPtr);
     Earth.addOrganism(0,0, orgPtr1);
     Earth.addOrganism(0,1, orgPtr2);
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 5; i++)
         Earth.makeTour();
 
 

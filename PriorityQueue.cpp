@@ -88,11 +88,13 @@ void PriorityQueue::addOrganism(Organism *orgPtr) {
 
 
 void PriorityQueue::killOrganism(Organism * orgPtr) {
-    int order = orgPtr->getOrder();
+
     if(orgPtr == nullptr)
         throw noOrganismWithThisPriorityException();
-    else
+    else {
+        int order = orgPtr->getOrder();
         Queue[order] = nullptr;
+    }
 
     sortQueue();
 }

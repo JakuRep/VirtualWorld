@@ -9,6 +9,7 @@
 #include <iostream>
 #include "MapExceptions.h"
 #include "Organism.h"
+
 Map::Map(int width, int height) {
     this->width = width;
     this->height= height;
