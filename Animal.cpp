@@ -11,8 +11,8 @@
 #define RIGHT 3
 #include "MapExceptions.h"
 #include "GlobalFunctions.h"
-Animal::Animal(int x, int y, int priority, int age, World * myWorld) :
-        Organism(x, y, priority, age, myWorld) {};
+Animal::Animal(int x, int y, int priority, int age, int strenght, World * myWorld) :
+        Organism(x, y, priority, age, strenght, myWorld) {};
 
 void Animal::move() {
     int crntX, crntY, newX, newY, direction;
@@ -54,17 +54,7 @@ void Animal::move() {
 
 }
 void Animal::collision(Organism * orgPtr) {
-    if(orgPtr == nullptr)
-        throw thereIsNoLifeOnThisFieldException();
-    else if(isAnimal(orgPtr->drawYourself())) {
-        if(this->drawYourself() == orgPtr->drawYourself()) {
-            reproduce(orgPtr);
-        } else {
-            //
-        }
-    } else {
 
-    }
 }
 
 void Animal::action() {
@@ -77,10 +67,23 @@ char Animal::drawYourself() {
 }
 
 void Animal::reproduce(Organism * orgPtr) {
-
+    int x = orgPtr->getX(), y=orgPtr->getY();
+    if(findFreeSpace(x,y)) {
+        Organism * ptr = new Animal(x, y, getPriority(), getWorld()->getAge(), getStrenght(), getWorld());
+        getWorld()->addOrganism(x,y,ptr);
+    } else {
+        //pass
+    }
 }
 
-bool Animal::amIStronger(Organism *orgPtr) {
-    return true;
+int Animal::amIStronger(Organism *orgPtr) {
+    int strThis = this->getStrenght(), strOther = orgPtr->getStrenght();
+    if(strThis > strOther)
+        return 1;
+    else if(strThis == strOther)
+        return 0;
+    else
+        return -1;
+
 }
 

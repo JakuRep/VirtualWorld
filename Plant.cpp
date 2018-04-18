@@ -4,8 +4,8 @@
 
 #include "Plant.h"
 #include "World.h"
-Plant::Plant(int x, int y, int priority, int age, World * myWorld) :
-    Organism(x, y, priority, age, myWorld) {};
+Plant::Plant(int x, int y, int priority, int age, int strenght, World * myWorld) :
+    Organism(x, y, priority, age, strenght, myWorld) {};
 
 void Plant::action() {
     sow();
@@ -14,7 +14,7 @@ void Plant::sow() {
     int x = getX(),  y = getY();
     if(findFreeSpace(x,y)) {
 
-        Organism * ptr = new Plant(x, y, this->getPriority(), getWorld()->getAge(), getWorld());
+        Organism * ptr = new Plant(x, y, this->getPriority(), getWorld()->getAge(),getStrenght(), getWorld());
         getWorld()->addOrganism(x,y, ptr);
     } else {
         //pass

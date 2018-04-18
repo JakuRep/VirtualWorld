@@ -3,3 +3,7 @@
 //
 
 #include "Sheep.h"
+/*
+Sheep::Sheep(int x, int y, int priority, int age, int strenght, World * myWorld) :
+        Animal(x, y, priority, age, strenght, myWorld) {};
+        */

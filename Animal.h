@@ -10,14 +10,14 @@
 class Animal: public Organism {
 private:
 public:
-    Animal(int x=0, int y=0,int priority=0, int age=0, World * myWorld=nullptr);
+    Animal(int x=0, int y=0,int priority=0, int age=0,int strenght = 0,  World * myWorld=nullptr);
     void action() override;
     char drawYourself() override;
     void collision(Organism * orgPtr);
 
     void move();
     void reproduce(Organism* orgPtr);
-    bool amIStronger(Organism * orgPtr);
+    int amIStronger(Organism * orgPtr);
 };
 
 

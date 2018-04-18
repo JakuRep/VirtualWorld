@@ -23,10 +23,10 @@ class Organism {
     World * MyWorld;
 
 public:
-    Organism(int x=0, int y = 0,int priority=0, int age=0, World * myWorld=nullptr);
+    Organism(int x=0, int y = 0,int priority=0, int age=0, int strength=0, World * myWorld=nullptr);
 
-    virtual void collision(Organism * orgPtr) = 0;
-    virtual void action() = 0;
+    virtual void collision(Organism * orgPtr)=0;
+    virtual void action()=0;
     virtual char drawYourself()=0;
     int getStrenght();
     int getPriority();

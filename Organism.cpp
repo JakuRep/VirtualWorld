@@ -3,9 +3,10 @@
 //
 #include "Organism.h"
 #include "World.h"
-Organism::Organism(int x, int y, int priority, int age, World * myWorld) {
+Organism::Organism(int x, int y, int priority, int age, int strenght, World * myWorld) {
     this->priority = priority;
     this->age = age;
+    this->strenght = strenght;
     this->order = 0;
     this->x = x;
     this->y = y;
@@ -77,5 +78,5 @@ World * Organism::getWorld() {
 }
 
 int Organism::getStrenght() {
-    return 1;
+    return strenght;
 }
