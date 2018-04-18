@@ -53,18 +53,6 @@ void Animal::move() {
 
 
 }
-void Animal::collision(Organism * orgPtr) {
-
-}
-
-void Animal::action() {
-    this->move();
-}
-
-char Animal::drawYourself() {
-    return 'A';
-
-}
 
 void Animal::reproduce(Organism * orgPtr) {
     int x = orgPtr->getX(), y=orgPtr->getY();
@@ -87,3 +75,35 @@ int Animal::amIStronger(Organism *orgPtr) {
 
 }
 
+bool Animal::isAnimal(Organism * orgPtr) {
+    if(orgPtr == nullptr)
+        throw thereIsNoLifeOnThisFieldException();
+
+    char sign = orgPtr->drawYourself();
+
+    if(sign >= 'A' && sign <='Z')
+        return true;
+    else if(sign >='a' && sign <='z')
+        return false;
+    else {
+        throw unknownOrganismType();
+    }
+}
+
+bool Animal::isSpieceTheSame(Organism *orgPtr) {
+    if(this->drawYourself() == orgPtr->drawYourself())
+        return true;
+    else
+        return false;
+}
+
+void Animal::fight(Organism * orgPtr) {
+    if(amIStronger(orgPtr)) {
+        int x = orgPtr->getX();
+        int y = orgPtr->getY();
+        this->getWorld()->killOrganism(orgPtr);
+        this->getWorld()->moveOrganism(this->getX(),this->getY(),x,y);
+    } else {
+        this->getWorld()->killOrganism(orgPtr);
+    }
+}

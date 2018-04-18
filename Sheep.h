@@ -5,7 +5,7 @@
 #ifndef VIRTUALWORLD_SHEEP_H
 #define VIRTUALWORLD_SHEEP_H
 #include "Animal.h"
-/*
+
 class Sheep:public Animal {
 public:
 private:
@@ -15,5 +15,5 @@ private:
     char drawYourself() override;
 };
 
-/*
+
 #endif //VIRTUALWORLD_SHEEP_H

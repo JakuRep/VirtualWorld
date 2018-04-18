@@ -11,13 +11,13 @@ class Animal: public Organism {
 private:
 public:
     Animal(int x=0, int y=0,int priority=0, int age=0,int strenght = 0,  World * myWorld=nullptr);
-    void action() override;
-    char drawYourself() override;
-    void collision(Organism * orgPtr);
 
+    bool isAnimal(Organism * orgPtr);
+    bool isSpieceTheSame(Organism * orgPtr);
     void move();
     void reproduce(Organism* orgPtr);
     int amIStronger(Organism * orgPtr);
+    void fight(Organism *orgPtr);
 };
 
 
