@@ -4,10 +4,13 @@
 
 #include "Animal.h"
 #include "World.h"
+
 #define UP 0
 #define DOWN 1
 #define LEFT 2
 #define RIGHT 3
+#include "MapExceptions.h"
+#include "GlobalFunctions.h"
 Animal::Animal(int x, int y, int priority, int age, World * myWorld) :
         Organism(x, y, priority, age, myWorld) {};
 
@@ -27,19 +30,15 @@ void Animal::move() {
 
         switch (direction) {
             case UP:
-            std::cout << "gora\n";
                 newY += 1;
                 break;
             case DOWN:
-                std::cout << "dol\n";
                 newY -= 1;
                 break;
             case LEFT:
-                std::cout << "lewo\n";
                 newX -= 1;
                 break;
             case RIGHT:
-                std::cout << "prawo\n";
                 newX += 1;
                 break;
         }
@@ -49,13 +48,23 @@ void Animal::move() {
     if(CurrentWorld->getXY(newX, newY) == nullptr) {
         CurrentWorld->moveOrganism(crntX, crntY, newX, newY);
     } else {
-        collision(newX, newY);
+        collision(CurrentWorld->getXY(newX, newY));
     }
 
 
 }
-void Animal::collision(int x, int y) {
-    std::cout << "kolizja";
+void Animal::collision(Organism * orgPtr) {
+    if(orgPtr == nullptr)
+        throw thereIsNoLifeOnThisFieldException();
+    else if(isAnimal(orgPtr->drawYourself())) {
+        if(this->drawYourself() == orgPtr->drawYourself()) {
+            reproduce(orgPtr);
+        } else {
+            //
+        }
+    } else {
+
+    }
 }
 
 void Animal::action() {
@@ -67,8 +76,8 @@ char Animal::drawYourself() {
 
 }
 
-void Animal::reproduce() {
-    //pass
+void Animal::reproduce(Organism * orgPtr) {
+
 }
 
 bool Animal::amIStronger(Organism *orgPtr) {

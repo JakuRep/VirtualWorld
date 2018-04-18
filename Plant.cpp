@@ -22,9 +22,9 @@ void Plant::sow() {
 };
 
 char Plant::drawYourself() {
-    return 'P';
+    return 'p';
 }
 
-void Plant::collision(int x, int y) {
+void Plant::collision(Organism * orgPtr) {
    //pass
 }

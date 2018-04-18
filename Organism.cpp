@@ -76,3 +76,6 @@ World * Organism::getWorld() {
     return this->MyWorld;
 }
 
+int Organism::getStrenght() {
+    return 1;
+}

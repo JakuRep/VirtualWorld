@@ -17,10 +17,18 @@ int main() {
     Organism * orgPtr = new Animal(19, 19,2,5,&Earth);
     Organism * orgPtr1 = new Animal(0,0,3,1,&Earth);
     Organism * orgPtr2 = new Animal(0,1,7,7,&Earth);
-    //Earth.addOrganism(0,1,orgPtr);
-    Earth.addOrganism(2,2,orgPtr2);
-    Earth.addOrganism(1,2,orgPtr1);
-    Earth.addOrganism(0,2,orgPtr);
+    Organism * orgPtr3 = new Animal(0,1,7,7,&Earth);
+    Organism * orgPtr4 = new Animal(0,1,7,7,&Earth);
+    Organism * orgPtr5 = new Animal(0,1,7,7,&Earth);
+    Organism * orgPtr6 = new Animal(0,1,7,7,&Earth);
+    Earth.addOrganism(0,0,orgPtr2);
+    Earth.addOrganism(1,0,orgPtr1);
+    Earth.addOrganism(0,1,orgPtr);
+    Earth.addOrganism(2,1,orgPtr3);
+    Earth.addOrganism(2,0,orgPtr4);
+    Earth.addOrganism(0,2,orgPtr5);
+    Earth.addOrganism(1,2,orgPtr6);
+
     Earth.display();
     for(int i = 0; i < 100; i++) {
       Earth.makeTour();

@@ -13,10 +13,10 @@ public:
     Animal(int x=0, int y=0,int priority=0, int age=0, World * myWorld=nullptr);
     void action() override;
     char drawYourself() override;
-    void collision(int x, int y);
+    void collision(Organism * orgPtr);
 
     void move();
-    void reproduce();
+    void reproduce(Organism* orgPtr);
     bool amIStronger(Organism * orgPtr);
 };
 

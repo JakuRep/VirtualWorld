@@ -14,7 +14,7 @@ public:
     void sow();
     char drawYourself() override;
     void action() override;
-    void collision(int x, int y) override;
+    void collision(Organism *  orgPtr) override;
 
 };
 

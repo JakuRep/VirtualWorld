@@ -16,6 +16,7 @@ class World;
 class Organism {
     int order;
     int priority;
+    int strenght;
     int age;
     int x;
     int y;
@@ -24,10 +25,10 @@ class Organism {
 public:
     Organism(int x=0, int y = 0,int priority=0, int age=0, World * myWorld=nullptr);
 
-    virtual void collision(int x, int y) = 0;
+    virtual void collision(Organism * orgPtr) = 0;
     virtual void action() = 0;
     virtual char drawYourself()=0;
-
+    int getStrenght();
     int getPriority();
     int getAge();
     int getOrder();
