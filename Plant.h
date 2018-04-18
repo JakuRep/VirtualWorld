@@ -11,8 +11,10 @@ private:
     //pass
 public:
     Plant(int x=0, int y=0,int priority=0, int age=0, World * myWorld=nullptr);
-    void akcja();
     void sow();
+    char drawYourself() override;
+    void action() override;
+    void collision(int x, int y) override;
 
 };
 

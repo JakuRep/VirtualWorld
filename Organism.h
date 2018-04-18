@@ -23,6 +23,11 @@ class Organism {
 
 public:
     Organism(int x=0, int y = 0,int priority=0, int age=0, World * myWorld=nullptr);
+
+    virtual void collision(int x, int y) = 0;
+    virtual void action() = 0;
+    virtual char drawYourself()=0;
+
     int getPriority();
     int getAge();
     int getOrder();
@@ -31,10 +36,9 @@ public:
     void setX(int x);
     int getY();
     void setY(int y);
-    virtual void akcja() = 0;
     bool findFreeSpace(int &x, int &y);
-    char drawYourself();
     World * getWorld();
+
 };
 
 

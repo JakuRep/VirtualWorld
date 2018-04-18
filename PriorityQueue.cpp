@@ -109,7 +109,7 @@ Organism* PriorityQueue::getPtrAtOrder(int order) {
 void PriorityQueue::makeTour() {
     for(int i = 0; i < size && Queue[i] != nullptr; i++) {
         if(Queue[i]->getAge() != tour)
-            Queue[i]->akcja();
+            Queue[i]->action();
     }
     tour++;
 }

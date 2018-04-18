@@ -3,4 +3,4 @@ project(VirtualWorld)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(VirtualWorld main.cpp Map.cpp Map.h PriorityQueue.cpp PriorityQueue.h MapExceptions.cpp MapExceptions.h QueueExceptions.cpp QueueExceptions.h Organism.cpp Organism.h World.cpp World.h WorldExceptions.cpp WorldExceptions.h OrganismExceptions.cpp OrganismExceptions.h Plant.cpp Plant.h)
+add_executable(VirtualWorld main.cpp Map.cpp Map.h PriorityQueue.cpp PriorityQueue.h MapExceptions.cpp MapExceptions.h QueueExceptions.cpp QueueExceptions.h Organism.cpp Organism.h World.cpp World.h WorldExceptions.cpp WorldExceptions.h OrganismExceptions.cpp OrganismExceptions.h Plant.cpp Plant.h Sheep.cpp Sheep.h Wolf.cpp Wolf.h Fox.cpp Fox.h Turtle.cpp Turtle.h Antelope.cpp Antelope.h Grass.cpp Grass.h Dandelion.cpp Dandelion.h Guarana.cpp Guarana.h Belladonna.cpp Belladonna.h SosnowskyiHodweed.cpp SosnowskyiHodweed.h)

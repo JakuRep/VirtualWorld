@@ -7,7 +7,7 @@
 Plant::Plant(int x, int y, int priority, int age, World * myWorld) :
     Organism(x, y, priority, age, myWorld) {};
 
-void Plant::akcja() {
+void Plant::action() {
     sow();
 }
 void Plant::sow() {
@@ -17,6 +17,14 @@ void Plant::sow() {
         Organism * ptr = new Plant(x, y, this->getPriority(), getWorld()->getAge(), getWorld());
         getWorld()->addOrganism(x,y, ptr);
     } else {
-        std::cout << "nie da sie rozmnozyc elo";
+        //pass
     }
 };
+
+char Plant::drawYourself() {
+    return 'P';
+}
+
+void Plant::collision(int x, int y) {
+   //pass
+}

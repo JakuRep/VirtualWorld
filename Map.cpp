@@ -57,7 +57,7 @@ void Map::display() {
             if(field[j][i] == nullptr)
                 std::cout << " ";
              else
-                putchar(field[i][j]->drawYourself());
+                putchar(field[j][i]->drawYourself());
         }
         std::cout << "#" << std::endl ;
     }

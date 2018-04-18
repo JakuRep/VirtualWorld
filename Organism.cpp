@@ -35,9 +35,6 @@ int Organism::getY() {
 void Organism::setY(int y) {
     this->y = y;
 }
-void Organism::akcja() {
-
-}
 bool Organism::findFreeSpace(int &x, int &y) {
     if(MyWorld->getXY(x,y) == nullptr) {
         throw findingFreeSpaceWithEmptyCoordinates();
@@ -75,11 +72,7 @@ bool Organism::findFreeSpace(int &x, int &y) {
         return false;
     }
 }
-
-char Organism::drawYourself() {
-    return 'O';
-}
-
 World * Organism::getWorld() {
     return this->MyWorld;
 }
+
