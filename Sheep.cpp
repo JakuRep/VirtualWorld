@@ -4,17 +4,21 @@
 
 #include "Sheep.h"
 
-Sheep::Sheep(int x, int y, int priority, int age, int strenght, World * myWorld) :
-        Animal(x, y, priority, age, strenght, myWorld) {};
+Sheep::Sheep(World * myWorld) :
+        Animal(myWorld) {
+    this->setPriority(4);
+    this->setStrenght(4);
+};
 
 void Sheep::collision(Organism * orgPtr) {
-    if(isAnimal(orgPtr)) {
-        if(isSpieceTheSame(orgPtr)) {
-            reproduce(orgPtr);
-        } else {
-            this->fight(orgPtr);
-        }
-    } else {
-
-    }
+    //pass
+}
+void Sheep::action() {
+    move();
+};
+char Sheep::drawYourself() {
+    return 'S';
+}
+Organism* Sheep::getNewKid() {
+    return new Sheep(this->getWorld());
 }

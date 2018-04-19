@@ -16,6 +16,7 @@ private:
 public:
     explicit World(int width = 20, int height = 20);
     ~World();
+
     int getHeight();
     int getWidth();
     int getSize();
@@ -29,6 +30,7 @@ public:
     void makeTour();
     bool isInBound(int x, int y);
     int getAge();
+
 
 };
 

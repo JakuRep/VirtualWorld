@@ -11,8 +11,8 @@
 #define RIGHT 3
 #include "MapExceptions.h"
 #include "GlobalFunctions.h"
-Animal::Animal(int x, int y, int priority, int age, int strenght, World * myWorld) :
-        Organism(x, y, priority, age, strenght, myWorld) {};
+Animal::Animal(World * myWorld) :
+        Organism(myWorld) {};
 
 void Animal::move() {
     int crntX, crntY, newX, newY, direction;
@@ -48,7 +48,13 @@ void Animal::move() {
     if(CurrentWorld->getXY(newX, newY) == nullptr) {
         CurrentWorld->moveOrganism(crntX, crntY, newX, newY);
     } else {
-        collision(CurrentWorld->getXY(newX, newY));
+        Organism * orgPtr = this->getWorld()->getXY(newX,newY);
+        if(isAnimal(orgPtr))
+            if(isSpieceTheSame(orgPtr))
+                reproduce(getWorld()->getXY(newX,newY));
+            else
+                fight(orgPtr);
+
     }
 
 
@@ -57,10 +63,8 @@ void Animal::move() {
 void Animal::reproduce(Organism * orgPtr) {
     int x = orgPtr->getX(), y=orgPtr->getY();
     if(findFreeSpace(x,y)) {
-        Organism * ptr = new Animal(x, y, getPriority(), getWorld()->getAge(), getStrenght(), getWorld());
+        Organism * ptr = this->getNewKid();
         getWorld()->addOrganism(x,y,ptr);
-    } else {
-        //pass
     }
 }
 
@@ -99,11 +103,12 @@ bool Animal::isSpieceTheSame(Organism *orgPtr) {
 
 void Animal::fight(Organism * orgPtr) {
     if(amIStronger(orgPtr)) {
+        orgPtr->collision(this);
         int x = orgPtr->getX();
         int y = orgPtr->getY();
         this->getWorld()->killOrganism(orgPtr);
         this->getWorld()->moveOrganism(this->getX(),this->getY(),x,y);
     } else {
-        this->getWorld()->killOrganism(orgPtr);
+        this->getWorld()->killOrganism(this);
     }
 }
