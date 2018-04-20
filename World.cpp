@@ -57,10 +57,11 @@ void World::killOrganism(Organism *orgPtr) {
     }
 }
 void World::display() {
-    GameQueue->display();
-    std::cout << "\n";
+    //GameQueue->display();
+    //std::cout << "\n";
+    //system("clear");
     GameMap->display();
-    std::cout << "\n\n\n\n";
+    //std::cout << "\n\n";
 }
 
 void World::makeTour() {

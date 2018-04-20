@@ -25,7 +25,7 @@ class Organism {
 public:
     Organism(World * myWorld=nullptr);
 
-    virtual void collision(Organism * orgPtr)=0;
+    virtual bool collision(Organism * orgPtr)=0;
     virtual void action()=0;
     virtual char drawYourself()=0;
     //getters setters

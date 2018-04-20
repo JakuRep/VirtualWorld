@@ -10,8 +10,8 @@ Sheep::Sheep(World * myWorld) :
     this->setStrenght(4);
 };
 
-void Sheep::collision(Organism * orgPtr) {
-    //pass
+bool Sheep::collision(Organism * orgPtr) {
+    return true;
 }
 void Sheep::action() {
     move();

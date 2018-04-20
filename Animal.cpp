@@ -102,13 +102,15 @@ bool Animal::isSpieceTheSame(Organism *orgPtr) {
 }
 
 void Animal::fight(Organism * orgPtr) {
-    if(amIStronger(orgPtr)) {
-        orgPtr->collision(this);
-        int x = orgPtr->getX();
-        int y = orgPtr->getY();
-        this->getWorld()->killOrganism(orgPtr);
-        this->getWorld()->moveOrganism(this->getX(),this->getY(),x,y);
-    } else {
-        this->getWorld()->killOrganism(this);
+
+    if (orgPtr->collision(this)) {
+        if (amIStronger(orgPtr)) {
+            int x = orgPtr->getX();
+            int y = orgPtr->getY();
+            this->getWorld()->killOrganism(orgPtr);
+            this->getWorld()->moveOrganism(this->getX(), this->getY(), x, y);
+        } else {
+            //sgetWorld()->killOrganism(this);
+        };
     }
 }

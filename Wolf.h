@@ -11,7 +11,7 @@ private:
     //pass
 public:
     Wolf(World* myWorld=nullptr);
-    void collision(Organism * orgPtr) override;
+    bool collision(Organism * orgPtr) override;
     void action() override;
     char drawYourself() override;
     Organism * getNewKid() override;

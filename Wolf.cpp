@@ -8,13 +8,12 @@ Wolf::Wolf(World * myWorld) :
     this->setPriority(5);
     this->setStrenght(9);
 }
-
-void Wolf::collision(Organism * orgPtr) {
-
+bool Wolf::collision(Organism * orgPtr) {
+    return true;
 }
 
 void Wolf::action() {
-
+    move();
 }
 
 char Wolf::drawYourself() {

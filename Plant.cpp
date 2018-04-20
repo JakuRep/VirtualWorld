@@ -25,6 +25,6 @@ char Plant::drawYourself() {
     return 'p';
 }
 
-void Plant::collision(Organism * orgPtr) {
+bool Plant::collision(Organism * orgPtr) {
    //pass
 }
