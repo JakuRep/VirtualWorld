@@ -76,3 +76,6 @@ int World::getAge() {
     return this->GameQueue->getTour();
 }
 
+void World::cleanCorpses() {
+    for(int i = 0; i <)
+}

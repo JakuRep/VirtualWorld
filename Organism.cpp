@@ -8,6 +8,7 @@ Organism::Organism(World * myWorld) {
     this->age = myWorld->getAge();
     this->strenght = strenght;
     this->order = 0;
+    this->alive = true;
     this->x = x;
     this->y = y;
     this->MyWorld = myWorld;
@@ -86,4 +87,11 @@ void Organism::setPriority(int priority) {
 
 void Organism::setStrenght(int strenght) {
     this->strenght = strenght;
+}
+
+void Organism::killMe() {
+    alive = false;
+}
+bool Organism::isAlive() {
+    return alive;
 }

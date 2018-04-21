@@ -30,7 +30,7 @@ public:
     void makeTour();
     bool isInBound(int x, int y);
     int getAge();
-
+    void cleanCorpses();
 
 };
 

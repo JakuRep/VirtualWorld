@@ -18,6 +18,7 @@ class Organism {
     int priority;
     int strenght;
     int age;
+    int alive;
     int x;
     int y;
     World * MyWorld;
@@ -41,8 +42,8 @@ public:
     int getY();
     void setY(int y);
     World * getWorld();
-
-
+    void killMe();
+    bool isAlive();
     bool findFreeSpace(int &x, int &y);
 
 
