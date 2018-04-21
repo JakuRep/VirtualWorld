@@ -77,5 +77,6 @@ int World::getAge() {
 }
 
 void World::cleanCorpses() {
-    for(int i = 0; i <)
+ //
+
 }
