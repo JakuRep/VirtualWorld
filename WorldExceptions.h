@@ -19,5 +19,10 @@ class noOrganismOnThisPointerException: public exception {
     }
 };
 
+class humanIsSupposedToHaveAloneLifeWithNoChildsSoWhyHeEvenTryToReproduceException: public exception {
+    const char* what() const throw() {
+        return "you cant have kids sorry...";
+    }
+};
 
 #endif //VIRTUALWORLD_WORLDEXCEPTIONS_H

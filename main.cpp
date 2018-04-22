@@ -17,28 +17,30 @@
 #include "Belladonna.h"
 #include "SosnowskyiHodweed.h"
 #include "Fox.h"
+#include "Antelope.h"
+#include "Turtle.h"
 int main() {
     srand(time(NULL));
 
     int x=0, y=0;
-    World Earth = World(30,30);
+    World Earth = World(12,12);
 
-    for(int i = 0; i < 30; i++) {
+    for(int i = 0; i < 11; i++) {
         if(i%5 == 0)
-            Earth.addOrganism(i, i*13%30, new Wolf(&Earth));
+            Earth.addOrganism(i, i*13%12, new Wolf(&Earth));
         else if(i%6 == 1)
-            Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
+            Earth.addOrganism(i, i*13%12, new Sheep(&Earth));
         else if(i%6 == 2)
-            Earth.addOrganism(i, i*13%30, new Guarana(&Earth));
+            Earth.addOrganism(i, i*13%12, new Guarana(&Earth));
         else if(i%6 == 3)
-            Earth.addOrganism(i, i*13%30, new Belladonna(&Earth));
+            Earth.addOrganism(i, i*13%12, new Grass(&Earth));
         else if(i%6 == 4)
-            Earth.addOrganism(i, i*13%30, new SosnowskyiHodweed(&Earth));
+            Earth.addOrganism(i, i*13%12, new Turtle(&Earth));
         else
-            Earth.addOrganism(i, i*13%30, new Dandelion(&Earth));
+            Earth.addOrganism(i, i*13%12, new Antelope(&Earth));
     }
 
-    Earth.addOrganism(12,12,new Fox(&Earth));
+    Earth.addOrganism(11,11,new Fox(&Earth));
     Earth.display();
     char wait;
     while(std::cin >> wait) {

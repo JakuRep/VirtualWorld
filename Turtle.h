@@ -4,10 +4,15 @@
 
 #ifndef VIRTUALWORLD_TURTLE_H
 #define VIRTUALWORLD_TURTLE_H
+#include "Animal.h"
 
-
-class Turtle {
-
+class Turtle: public Animal {
+public:
+    Turtle(World* myWorld = nullptr);
+    bool collision(Organism * orgPtr) override;
+    void action() override;
+    char drawYourself() override;
+    Organism * getNewKid() override;
 };
 
 
