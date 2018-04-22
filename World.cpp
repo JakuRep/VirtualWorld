@@ -21,62 +21,37 @@ int World::getWidth() {
 int World::getHeight() {
     return GameMap->getWidth();
 }
+int World::getAge() {
+    return this->GameQueue->getTour();
+}
 Organism * World::getXY(int x, int y) {
     return (GameMap->getOrganism(x,y));
 }
-
 bool World::moveOrganism(int oldX, int oldY, int newX, int newY) {
     return GameMap->moveOrganism(oldX, oldY, newX, newY);
 }
-
 void World::addOrganism(int x, int y, Organism *orgPtr) {
     GameMap->addOrganism(x,y,orgPtr);
     GameQueue->addOrganism(orgPtr);
 }
-
-void World::killOrganism(int x, int y) {
-    Organism * orgPtr = getXY(x,y);
-    if(orgPtr == nullptr)
-        throw noOrganismWithThisPriorityException();
-    else {
-        GameMap->killOrganism(x, y);
-        GameQueue->killOrganism(orgPtr);
-        delete orgPtr;
-    }
-}
-
 void World::killOrganism(Organism *orgPtr) {
-    int x = orgPtr->getX(), y = orgPtr->getY();
-
-    if(getXY(x,y) == nullptr)
-        throw noOrganismWithThisPriorityException();
-    else {
-        GameMap->killOrganism(x,y);
-        GameQueue->killOrganism(orgPtr);
-        delete orgPtr;
-    }
+    GameQueue->killOrganism(orgPtr);
+    GameMap->killOrganism(orgPtr);
+}
+void World::makeTour() {
+    GameQueue->makeTour();
+    GameQueue->cleanDeadBodies();
+    display();
 }
 void World::display() {
     //GameQueue->display();
     //std::cout << "\n";
-    //system("clear");
+    system("clear");
     GameMap->display();
     //std::cout << "\n\n";
 }
-
-void World::makeTour() {
-    GameQueue->makeTour();
-    display();
-}
-
 bool World::isInBound(int x, int y) {
     return GameMap->isInMap(x,y);
 }
-int World::getAge() {
-    return this->GameQueue->getTour();
-}
 
-void World::cleanCorpses() {
- //
 
-}

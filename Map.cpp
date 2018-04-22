@@ -24,29 +24,24 @@ Map::Map(int width, int height) {
     }
 
 }
-
 Map::~Map() {
     for(int i = 0; i < width; i++){
         delete field[i];
     }
     delete field;
 }
-
 Organism * Map::getOrganism(int x, int y) {
     if(!isInMap(x,y))
         throw outOfBoundsException();
 
     return field[x][y];
 }
-
 int Map::getWidth() {
     return width;
 }
-
 int Map::getHeight() {
     return height;
 }
-
 void Map::display() {
     for(int i = 0; i < width + 2; i++)
         putchar('#');
@@ -65,8 +60,6 @@ void Map::display() {
     for(int i = 0; i < width + 2; i++)
         putchar('#');
 }
-
-
 bool Map::isInMap(int x, int y) {
     if(x >= 0 && x < width && y >= 0 && y < height)
         return true;
@@ -74,7 +67,6 @@ bool Map::isInMap(int x, int y) {
         return false;
 
 }
-
 void Map::addOrganism(int x, int y, Organism * orgPtr) {
     if(!isInMap(x,y))
         throw outOfBoundsException();
@@ -87,7 +79,6 @@ void Map::addOrganism(int x, int y, Organism * orgPtr) {
         throw fieldAlreadyTakenException();
 
 }
-
 bool Map::moveOrganism(int oldX, int oldY, int newX, int newY) {
     if(!isInMap(newX,newY)) {
         throw outOfBoundsException();
@@ -101,14 +92,8 @@ bool Map::moveOrganism(int oldX, int oldY, int newX, int newY) {
         return false;
     }
 }
+void Map::killOrganism(Organism *orgPtr) {
+    int x = orgPtr->getX(), y = orgPtr->getY();
+    field[x][y] = nullptr;
 
-void Map::killOrganism(int x, int y) {
-
-    if(field[x][y] == nullptr)
-        throw thereIsNoLifeOnThisFieldException();
-    else {
-        delete field[x][y];
-        field[x][y] = nullptr;
-    }
 }
-

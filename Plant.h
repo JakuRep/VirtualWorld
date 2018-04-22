@@ -12,9 +12,7 @@ private:
 public:
     Plant(World * myWorld=nullptr);
     void sow();
-    char drawYourself() override;
-    void action() override;
-    bool collision(Organism *  orgPtr) override;
+    virtual Organism * getChild() = 0;
 
 };
 

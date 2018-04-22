@@ -26,6 +26,13 @@ void PriorityQueue::display() {
         }
     }
 }
+Organism* PriorityQueue::getPtrAtOrder(int order) {
+    if(order < 0 || order > size) {
+        throw outOfBoardException();
+    } else {
+        return Queue[order];
+    }
+}
 int PriorityQueue::getSize() {
     return this->size;
 }
@@ -55,6 +62,7 @@ bool PriorityQueue::isPriorityBigger(Organism *orgOne, Organism *orgTwo) {
 }
 void PriorityQueue::sortQueue() {
     int i, j;
+
     Organism * tmp;
     bool isSorted = 0;
 
@@ -71,12 +79,11 @@ void PriorityQueue::sortQueue() {
     }
 
     for(i = 0; i < size; i++){
-        if(Queue[i] == nullptr) {
-            //pass
-        } else {
+        if(Queue[i] != nullptr) {
             Queue[i]->setOrder(i);
         }
     }
+
 }
 void PriorityQueue::addOrganism(Organism *orgPtr) {
     if(Queue[size-1] != nullptr) {
@@ -86,26 +93,6 @@ void PriorityQueue::addOrganism(Organism *orgPtr) {
         sortQueue();
     }
 }
-
-
-void PriorityQueue::killOrganism(Organism * orgPtr) {
-
-    if(orgPtr == nullptr)
-        throw noOrganismWithThisPriorityException();
-    else {
-        int order = orgPtr->getOrder();
-        Queue[order] = nullptr;
-    }
-    sortQueue();
-}
-Organism* PriorityQueue::getPtrAtOrder(int order) {
-    if(order < 0 || order > size) {
-        throw outOfBoardException();
-    } else {
-        return Queue[order];
-    }
-}
-
 void PriorityQueue::makeTour() {
     for(int i = 0; i < size && Queue[i] != nullptr; i++) {
         if(Queue[i]->getAge() != tour)
@@ -115,4 +102,23 @@ void PriorityQueue::makeTour() {
 }
 int PriorityQueue::getTour() {
     return this->tour;
+}
+void PriorityQueue::cleanDeadBodies() {
+    while(!toFree.empty()) {
+        delete toFree.front();
+        toFree.pop();
+    }
+}
+void PriorityQueue::freezeCorps(Organism * orgPtr) {
+    toFree.push(orgPtr);
+}
+void PriorityQueue::killOrganism(Organism *orgPtr) {
+    int order = orgPtr->getOrder();
+    if(Queue[order] != nullptr) {
+        freezeCorps(Queue[order]);
+        Queue[order] = nullptr;
+        sortQueue();
+    } else {
+        throw noOrganismWithThisPriorityException();
+    }
 }

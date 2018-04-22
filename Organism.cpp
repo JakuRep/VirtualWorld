@@ -8,16 +8,21 @@ Organism::Organism(World * myWorld) {
     this->age = myWorld->getAge();
     this->strenght = strenght;
     this->order = 0;
-    this->alive = true;
     this->x = x;
     this->y = y;
     this->MyWorld = myWorld;
 }
+int Organism::getStrenght() {
+    return strenght;
+}
+void Organism::setStrenght(int strenght) {
+    this->strenght = strenght;
+}
 int Organism::getPriority() {
     return priority;
 }
-int Organism::getAge() {
-    return age;
+void Organism::setPriority(int priority) {
+    this->priority = priority;
 }
 int Organism::getOrder() {
     return order;
@@ -36,6 +41,12 @@ int Organism::getY() {
 }
 void Organism::setY(int y) {
     this->y = y;
+}
+int Organism::getAge() {
+    return age;
+}
+World * Organism::getWorld() {
+    return this->MyWorld;
 }
 bool Organism::findFreeSpace(int &x, int &y) {
     if(MyWorld->getXY(x,y) == nullptr) {
@@ -74,24 +85,10 @@ bool Organism::findFreeSpace(int &x, int &y) {
         return false;
     }
 }
-World * Organism::getWorld() {
-    return this->MyWorld;
-}
-
-int Organism::getStrenght() {
-    return strenght;
-}
-void Organism::setPriority(int priority) {
-    this->priority = priority;
-}
-
-void Organism::setStrenght(int strenght) {
-    this->strenght = strenght;
-}
-
-void Organism::killMe() {
-    alive = false;
-}
-bool Organism::isAlive() {
-    return alive;
+void Organism::killOrganism(Organism *orgPtr) {
+    if(orgPtr != nullptr) {
+        MyWorld->killOrganism(orgPtr);
+    } else {
+        throw noOrganismOnThisPointerException();
+    }
 }

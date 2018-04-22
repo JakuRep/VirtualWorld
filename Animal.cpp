@@ -13,7 +13,26 @@
 #include "GlobalFunctions.h"
 Animal::Animal(World * myWorld) :
         Organism(myWorld) {};
+bool Animal::isAnimal(Organism * orgPtr) {
+    if(orgPtr == nullptr)
+        throw thereIsNoLifeOnThisFieldException();
 
+    char sign = orgPtr->drawYourself();
+
+    if(sign >= 'A' && sign <='Z')
+        return true;
+    else if(sign >='a' && sign <='z')
+        return false;
+    else {
+        throw unknownOrganismType();
+    }
+}
+bool Animal::isSpieceTheSame(Organism *orgPtr) {
+    if(this->drawYourself() == orgPtr->drawYourself())
+        return true;
+    else
+        return false;
+}
 void Animal::move() {
     int crntX, crntY, newX, newY, direction;
     bool isInBound = false;
@@ -49,17 +68,16 @@ void Animal::move() {
         CurrentWorld->moveOrganism(crntX, crntY, newX, newY);
     } else {
         Organism * orgPtr = this->getWorld()->getXY(newX,newY);
-        if(isAnimal(orgPtr))
-            if(isSpieceTheSame(orgPtr))
-                reproduce(getWorld()->getXY(newX,newY));
-            else
-                fight(orgPtr);
-
+        if(isAnimal(orgPtr) && this->drawYourself() == orgPtr->drawYourself())
+            reproduce(orgPtr);
+        else {
+            fight(orgPtr);
+            CurrentWorld->moveOrganism(crntX, crntY, newX, newY);
+        }
     }
 
 
 }
-
 void Animal::reproduce(Organism * orgPtr) {
     int x = orgPtr->getX(), y=orgPtr->getY();
     if(findFreeSpace(x,y)) {
@@ -67,50 +85,21 @@ void Animal::reproduce(Organism * orgPtr) {
         getWorld()->addOrganism(x,y,ptr);
     }
 }
-
 int Animal::amIStronger(Organism *orgPtr) {
     int strThis = this->getStrenght(), strOther = orgPtr->getStrenght();
-    if(strThis > strOther)
+    if(strThis >= strOther)
         return 1;
-    else if(strThis == strOther)
+    else
         return 0;
-    else
-        return -1;
 
 }
-
-bool Animal::isAnimal(Organism * orgPtr) {
-    if(orgPtr == nullptr)
-        throw thereIsNoLifeOnThisFieldException();
-
-    char sign = orgPtr->drawYourself();
-
-    if(sign >= 'A' && sign <='Z')
-        return true;
-    else if(sign >='a' && sign <='z')
-        return false;
-    else {
-        throw unknownOrganismType();
-    }
-}
-
-bool Animal::isSpieceTheSame(Organism *orgPtr) {
-    if(this->drawYourself() == orgPtr->drawYourself())
-        return true;
-    else
-        return false;
-}
-
 void Animal::fight(Organism * orgPtr) {
-
-    if (orgPtr->collision(this)) {
-        if (amIStronger(orgPtr)) {
-            int x = orgPtr->getX();
-            int y = orgPtr->getY();
-            this->getWorld()->killOrganism(orgPtr);
-            this->getWorld()->moveOrganism(this->getX(), this->getY(), x, y);
-        } else {
-            //sgetWorld()->killOrganism(this);
-        };
+    if(!orgPtr->collision(this)) {/*pass*/}
+    else {
+        if(amIStronger(orgPtr))
+            getWorld()->killOrganism(orgPtr);
+        else
+            killOrganism(this);
     }
+
 }

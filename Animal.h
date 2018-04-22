@@ -10,9 +10,8 @@
 class Animal: public Organism {
 private:
 public:
-    Animal(World * myWorld=nullptr);
 
-    virtual Organism * getNewKid() = 0;
+    Animal(World * myWorld=nullptr);
 
     bool isAnimal(Organism * orgPtr);
     bool isSpieceTheSame(Organism * orgPtr);
@@ -20,6 +19,7 @@ public:
     void reproduce(Organism* orgPtr);
     int amIStronger(Organism * orgPtr);
     void fight(Organism *orgPtr);
+    virtual Organism * getNewKid() = 0;
 };
 
 

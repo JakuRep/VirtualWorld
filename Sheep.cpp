@@ -21,4 +21,5 @@ char Sheep::drawYourself() {
 }
 Organism* Sheep::getNewKid() {
     return new Sheep(this->getWorld());
+
 }

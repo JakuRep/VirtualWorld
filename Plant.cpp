@@ -7,24 +7,13 @@
 Plant::Plant(World * myWorld) :
     Organism(myWorld) {};
 
-void Plant::action() {
-    sow();
-}
 void Plant::sow() {
     int x = getX(),  y = getY();
     if(findFreeSpace(x,y)) {
 
-        Organism * ptr = new Plant(getWorld());
+        Organism * ptr = this->getChild();
         getWorld()->addOrganism(x,y,ptr);
     } else {
         //pass
     }
 };
-
-char Plant::drawYourself() {
-    return 'p';
-}
-
-bool Plant::collision(Organism * orgPtr) {
-   //pass
-}

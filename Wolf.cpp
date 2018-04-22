@@ -11,11 +11,9 @@ Wolf::Wolf(World * myWorld) :
 bool Wolf::collision(Organism * orgPtr) {
     return true;
 }
-
 void Wolf::action() {
     move();
 }
-
 char Wolf::drawYourself() {
     return 'W';
 }

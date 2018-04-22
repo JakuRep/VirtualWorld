@@ -5,7 +5,7 @@
 #ifndef VIRTUALWORLD_PRIORITYQUEUE_H
 #define VIRTUALWORLD_PRIORITYQUEUE_H
 #include "QueueExceptions.h"
-
+#include <queue>
 
 class Organism;
 class PriorityQueue {
@@ -13,7 +13,8 @@ private:
     Organism ** Queue;
     int size;
     int tour;
-public:
+    std::queue <Organism*> toFree;
+ public:
     explicit PriorityQueue(int size = 20*20);
     ~PriorityQueue();
     void display();
@@ -22,9 +23,11 @@ public:
     bool isPriorityBigger(Organism * orgOne, Organism * orgTwo);
     void sortQueue();
     void addOrganism(Organism * orgPtr);
-    void killOrganism(Organism * orgPtr);
     void makeTour();
     int getTour();
+    void cleanDeadBodies();
+    void freezeCorps(Organism * orgPtr);
+    void killOrganism(Organism* orgPtr);
 
 
 };

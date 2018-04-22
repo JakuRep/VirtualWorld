@@ -8,6 +8,8 @@
 #include "Map.h"
 #include "WorldExceptions.h"
 #include <iostream>
+#include <stdlib.h>
+#include <queue>
 class Organism;
 class World {
 private:
@@ -16,21 +18,19 @@ private:
 public:
     explicit World(int width = 20, int height = 20);
     ~World();
-
     int getHeight();
     int getWidth();
     int getSize();
-
+    int getAge();
     Organism * getXY(int x, int y);
     bool moveOrganism(int oldX, int oldY, int newX, int newY);
-    void killOrganism(int x, int y);
-    void killOrganism(Organism * orgPtr);
     void addOrganism(int x, int y, Organism *orgPtr);
-    void display();
+    void killOrganism(Organism * orgPtr);
     void makeTour();
+    void display();
     bool isInBound(int x, int y);
-    int getAge();
-    void cleanCorpses();
+
+
 
 };
 

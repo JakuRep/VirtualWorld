@@ -13,42 +13,34 @@ using namespace std;
 #define LEFT 2
 #define RIGHT 3
 class World;
+
 class Organism {
     int order;
     int priority;
     int strenght;
     int age;
-    int alive;
     int x;
     int y;
     World * MyWorld;
-
 public:
-    Organism(World * myWorld=nullptr);
 
-    virtual bool collision(Organism * orgPtr)=0;
-    virtual void action()=0;
-    virtual char drawYourself()=0;
-    //getters setters
+    Organism(World * myWorld=nullptr);
     int getStrenght();
+    void setStrenght(int strenght);
     int getPriority();
     void setPriority(int priority);
-    void setStrenght(int strenght);
-    int getAge();
     int getOrder();
     void setOrder(int order);
     int getX();
     void setX(int x);
     int getY();
     void setY(int y);
+    int getAge();
     World * getWorld();
-    void killMe();
-    bool isAlive();
     bool findFreeSpace(int &x, int &y);
-
-
-
+    void killOrganism(Organism * orgPtr);
+    virtual bool collision(Organism * orgPtr)=0;
+    virtual void action()=0;
+    virtual char drawYourself()=0;
 };
-
-
 #endif //VIRTUALWORLD_ORGANISM_H

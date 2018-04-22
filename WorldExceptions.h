@@ -13,5 +13,11 @@ class noOrganismOnThisCoordinatesException: public exception {
     }
 };
 
+class noOrganismOnThisPointerException: public exception {
+    const char* what() const throw() {
+        return "trying to kill organism with nullptr";
+    }
+};
+
 
 #endif //VIRTUALWORLD_WORLDEXCEPTIONS_H
