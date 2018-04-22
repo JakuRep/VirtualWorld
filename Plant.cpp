@@ -17,3 +17,9 @@ void Plant::sow() {
         //pass
     }
 };
+bool Plant::isAnimal(Organism *orgPtr) {
+    if(orgPtr->drawYourself() >= 'A' && orgPtr->drawYourself() <= 'Z')
+        return true;
+    else
+        return false;
+}

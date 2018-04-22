@@ -17,7 +17,7 @@ void Sheep::action() {
     move();
 };
 char Sheep::drawYourself() {
-    return 'S';
+    return 'O';
 }
 Organism* Sheep::getNewKid() {
     return new Sheep(this->getWorld());

@@ -44,9 +44,10 @@ void World::makeTour() {
     display();
 }
 void World::display() {
-    //GameQueue->display();
-    //std::cout << "\n";
     system("clear");
+    GameQueue->display();
+    //std::cout << "\n";
+
     GameMap->display();
     //std::cout << "\n\n";
 }

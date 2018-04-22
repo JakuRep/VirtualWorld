@@ -13,6 +13,9 @@
 #include "Wolf.h"
 #include "Grass.h"
 #include "Dandelion.h"
+#include "Guarana.h"
+#include "Belladonna.h"
+#include "SosnowskyiHodweed.h"
 int main() {
     srand(time(NULL));
 
@@ -20,14 +23,18 @@ int main() {
     World Earth = World(30,30);
 
     for(int i = 0; i < 30; i++) {
-        if(i%4 == 0)
-            Earth.addOrganism(i, i*13%30, new Wolf(&Earth));
-        else if(i%4 == 1)
+        if(i%5 == 0)
             Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
-        else if(i%4 == 2)
+        else if(i%6 == 1)
+            Earth.addOrganism(i, i*13%30, new SosnowskyiHodweed(&Earth));
+        else if(i%6 == 2)
+            Earth.addOrganism(i, i*13%30, new Wolf(&Earth));
+        else if(i%6 == 3)
             Earth.addOrganism(i, i*13%30, new Grass(&Earth));
+        else if(i%6 == 4)
+            Earth.addOrganism(i, i*13%30, new Guarana(&Earth));
         else
-            Earth.addOrganism(i, i*13%30, new Dandelion(&Earth));
+            Earth.addOrganism(i, i*13%30, new Belladonna(&Earth));
     }
     Earth.display();
     char wait;

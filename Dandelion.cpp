@@ -19,7 +19,7 @@ void Dandelion::action() {
 }
 
 char Dandelion::drawYourself() {
-    return 'd';
+    return 'm';
 }
 Organism * Dandelion::getChild() {
     return new Dandelion(getWorld());

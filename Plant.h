@@ -13,6 +13,7 @@ public:
     Plant(World * myWorld=nullptr);
     void sow();
     virtual Organism * getChild() = 0;
+    bool isAnimal(Organism * orgPtr);
 
 };
 

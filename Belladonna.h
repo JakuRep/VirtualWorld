@@ -4,10 +4,15 @@
 
 #ifndef VIRTUALWORLD_BELLADONNA_H
 #define VIRTUALWORLD_BELLADONNA_H
+#include "Plant.h"
 
-
-class Belladonna {
-
+class Belladonna:public Plant {
+public:
+    Belladonna(World *MyWorld = nullptr);
+    bool collision(Organism * orgPtr) override;
+    void action() override;
+    char drawYourself() override;
+    Organism * getChild() override;
 };
 
 

@@ -21,7 +21,7 @@ PriorityQueue::~PriorityQueue() {
 void PriorityQueue::display() {
     for(int i = 0; i < size; i++) {
         if(Queue[i] != nullptr) {
-            std::cout << Queue[i]->getPriority() << " " << Queue[i]->getAge();
+            std::cout << Queue[i]->getPriority() << " " << Queue[i]->getAge() << " " << Queue[i]->drawYourself();
             std::cout << std::endl;
         }
     }

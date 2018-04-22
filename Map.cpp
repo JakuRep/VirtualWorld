@@ -43,21 +43,23 @@ int Map::getHeight() {
     return height;
 }
 void Map::display() {
-    for(int i = 0; i < width + 2; i++)
+    for(int i = 0; i < 3*width + 2; i++)
         putchar('#');
-    std::cout << std::endl;
+
     for(int i = height; i >= 0; i--) {
         std::cout << "#";
         for(int j = 0; j < width; j++) {
+            std::cout << " ";
             if(field[j][i] == nullptr)
                 std::cout << " ";
              else
                 putchar(field[j][i]->drawYourself());
+            std::cout << " ";
         }
-        std::cout << "#" << std::endl ;
+        std::cout << "#" << std::endl;
     }
 
-    for(int i = 0; i < width + 2; i++)
+    for(int i = 0; i < 3*width + 2; i++)
         putchar('#');
 }
 bool Map::isInMap(int x, int y) {

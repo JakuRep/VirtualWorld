@@ -4,9 +4,15 @@
 
 #ifndef VIRTUALWORLD_SOSNOWSKYIHODWEED_H
 #define VIRTUALWORLD_SOSNOWSKYIHODWEED_H
+#include "Plant.h"
 
-
-class SosnowskyiHodweed {
+class SosnowskyiHodweed: public Plant {
+public:
+    SosnowskyiHodweed(World *MyWorld = nullptr);
+    bool collision(Organism * orgPtr) override;
+    void action() override;
+    char drawYourself() override;
+    Organism * getChild() override;
 
 };
 
