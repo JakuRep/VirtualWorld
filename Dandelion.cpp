@@ -3,3 +3,24 @@
 //
 
 #include "Dandelion.h"
+Dandelion::Dandelion(World *MyWorld) :
+    Plant(MyWorld){
+        this->setStrenght(0);
+        this->setPriority(0);
+    };
+
+bool Dandelion::collision(Organism *orgPtr) {
+    return true;
+}
+void Dandelion::action() {
+    for(int i = 0; i < 3; i++) {
+        sow();
+    }
+}
+
+char Dandelion::drawYourself() {
+    return 'd';
+}
+Organism * Dandelion::getChild() {
+    return new Dandelion(getWorld());
+}

@@ -4,7 +4,9 @@
 
 #include "Grass.h"
 Grass::Grass(World *MyWorld) :
-        Plant(MyWorld){};
+        Plant(MyWorld){
+    this->setStrenght(0); this->setPriority(0);
+};
 
 bool Grass::collision(Organism *orgPtr) {
     return true;

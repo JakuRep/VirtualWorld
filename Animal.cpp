@@ -71,8 +71,8 @@ void Animal::move() {
         if(isAnimal(orgPtr) && this->drawYourself() == orgPtr->drawYourself())
             reproduce(orgPtr);
         else {
-            fight(orgPtr);
-            CurrentWorld->moveOrganism(crntX, crntY, newX, newY);
+            if(fight(orgPtr))
+                CurrentWorld->moveOrganism(crntX, crntY, newX, newY);
         }
     }
 
@@ -93,13 +93,18 @@ int Animal::amIStronger(Organism *orgPtr) {
         return 0;
 
 }
-void Animal::fight(Organism * orgPtr) {
-    if(!orgPtr->collision(this)) {/*pass*/}
-    else {
-        if(amIStronger(orgPtr))
+bool Animal::fight(Organism * orgPtr) {
+    if(!orgPtr->collision(this)) {
+        return false;
+    } else {
+        if(amIStronger(orgPtr)) {
             getWorld()->killOrganism(orgPtr);
-        else
-            killOrganism(this);
+            return true;
+        } else {
+            getWorld()->killOrganism(this);
+            return false;
+        }
+
     }
 
 }

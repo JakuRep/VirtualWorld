@@ -18,7 +18,7 @@ public:
     void move();
     void reproduce(Organism* orgPtr);
     int amIStronger(Organism * orgPtr);
-    void fight(Organism *orgPtr);
+    bool fight(Organism *orgPtr);
     virtual Organism * getNewKid() = 0;
 };
 
