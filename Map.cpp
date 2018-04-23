@@ -43,7 +43,7 @@ int Map::getHeight() {
     return height;
 }
 void Map::display() {
-    for(int i = 0; i < 3*width + 2; i++)
+    for(int i = 0; i < 3*width + 1; i++)
         putchar('#');
 
     for(int i = height; i >= 0; i--) {

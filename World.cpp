@@ -44,15 +44,17 @@ void World::makeTour() {
     display();
 }
 void World::display() {
-    //system("clear");
+    system("clear");
     GameQueue->display();
-    //std::cout << "\n";
+    std::cout << "\n";
 
     GameMap->display();
-    //std::cout << "\n\n";
+    std::cout << "\n\n";
 }
 bool World::isInBound(int x, int y) {
     return GameMap->isInMap(x,y);
 }
-
+Organism * World::getAtOrder(int order) {
+    return GameQueue->getPtrAtOrder(order);
+}
 

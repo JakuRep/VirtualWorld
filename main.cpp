@@ -24,32 +24,35 @@ int main() {
     srand(time(NULL));
 
     int x=0, y=0;
-    World Earth = World(12,12);
-
-    for(int i = 0; i < 11; i++) {
+    World Earth = World(30,30);
+    Organism * MaciejJakubowski = new Human(&Earth);
+    for(int i = 0; i < 30; i++) {
         if(i%5 == 0)
-            Earth.addOrganism(i, i*13%12, new Wolf(&Earth));
-        else if(i%6 == 1)
-            Earth.addOrganism(i, i*13%12, new Sheep(&Earth));
-        else if(i%6 == 2)
-            Earth.addOrganism(i, i*13%12, new Guarana(&Earth));
-        else if(i%6 == 3)
-            Earth.addOrganism(i, i*13%12, new Grass(&Earth));
-        else if(i%6 == 4)
-            Earth.addOrganism(i, i*13%12, new Turtle(&Earth));
-        else
-            Earth.addOrganism(i, i*13%12, new Antelope(&Earth));
+            Earth.addOrganism(i, i*13%30, new Wolf(&Earth));
+        else if(i%10 == 1)
+            Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
+        else if(i%10 == 2)
+            Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
+        else if(i%10 == 3)
+            Earth.addOrganism(i, i*13%30, new Wolf(&Earth));
+        else if(i%10 == 4)
+            Earth.addOrganism(i, i*13%30, new SosnowskyiHodweed(&Earth));
+        else if(i%10 == 5)
+            Earth.addOrganism(i, i*13%30, new SosnowskyiHodweed(&Earth));
+        else if(i%10 == 6)
+            Earth.addOrganism(i, i*13%30, new Antelope(&Earth));
+        else if(i%10 == 7)
+            Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
+        else if(i%10 == 8)
+            Earth.addOrganism(i, i*13%30, new Antelope(&Earth));
     }
 
-    Earth.addOrganism(11,11,new Human(&Earth));
+    Earth.addOrganism(11,11,MaciejJakubowski);
     Earth.display();
     char wait;
-    char i = 0;
-    while(i < 10) {
-
+    while(Earth.getAtOrder(0)->drawYourself() == 'H') {
       Earth.display();
       Earth.makeTour();
-      i++;
     }
 
 

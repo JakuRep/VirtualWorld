@@ -19,7 +19,7 @@ void Guarana::action() {
     sow();
 }
 char Guarana::drawYourself() {
-    return 'g';
+    return 'e';
 }
 Organism * Guarana::getChild() {
     return new Guarana(getWorld());

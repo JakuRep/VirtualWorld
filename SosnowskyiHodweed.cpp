@@ -14,7 +14,6 @@ bool SosnowskyiHodweed::collision(Organism *orgPtr) {
     killOrganism(orgPtr);
     return false;
 }
-
 void SosnowskyiHodweed::action() {
     int x=getX(), y=getY();
     int xTmp, yTmp;

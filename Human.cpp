@@ -5,6 +5,10 @@
 #include "Human.h"
 #include "World.h"
 #include "Animal.h"
+#define KU 103
+#define KD 108
+#define KL 105
+#define KR 106
 Human::Human(World * myWorld) :
         Animal(myWorld) {
     this->setStrenght(5);
@@ -18,30 +22,35 @@ void Human::action() {
     int crntX = getX(), crntY = getY(), newY = crntY, newX = crntX;
     World* CurrentWorld = getWorld();
     int c;
-    initscr();
-    cbreak();
-    noecho();
-    keypad(stdscr, true);
 
+    initscr();
+    raw();
+    keypad(stdscr, true);
+    noecho();
         newX = crntX;
         newY = crntY;
-        switch (c = getch()) {
+    c = getch();
+        switch (c) {
             case KEY_UP:
-                newY-=1;
-                break;
-
-            case KEY_DOWN:
                 newY+=1;
                 break;
 
-            case KEY_RIGHT:
-                newX+=1;
+            case KEY_DOWN:
+                newY-=1;
                 break;
 
             case KEY_LEFT:
                 newX-=1;
                 break;
+
+            case KEY_RIGHT:
+                newX+=1;
+                break;
+            default:
+                newX+=1;
+                break;
         }
+        refresh();
         endwin();
     if(getWorld()->isInBound(newX, newY)) {
         if (CurrentWorld->getXY(newX, newY) == nullptr) {
@@ -66,7 +75,3 @@ Organism* Human::getNewKid() {
     return nullptr;
 }
 
-void Human::walk(int x, int y) {
-    World * currentWorld = getWorld();
-
-}

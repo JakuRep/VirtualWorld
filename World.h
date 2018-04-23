@@ -29,7 +29,7 @@ public:
     void makeTour();
     void display();
     bool isInBound(int x, int y);
-
+    Organism *getAtOrder(int order);
 
 
 };

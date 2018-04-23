@@ -104,8 +104,10 @@ int PriorityQueue::getTour() {
     return this->tour;
 }
 void PriorityQueue::cleanDeadBodies() {
+    Organism * tmp;
     while(!toFree.empty()) {
-        delete toFree.front();
+         delete toFree.front();
+
         toFree.pop();
     }
 }
