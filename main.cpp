@@ -44,8 +44,9 @@ int main() {
     Earth.addOrganism(11,11,new Human(&Earth));
     Earth.display();
     char wait;
-    int i = 0;
-    while(i < 20) {
+    char i = 0;
+    while(i < 10) {
+
       Earth.display();
       Earth.makeTour();
       i++;

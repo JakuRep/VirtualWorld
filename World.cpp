@@ -44,7 +44,7 @@ void World::makeTour() {
     display();
 }
 void World::display() {
-    system("clear");
+    //system("clear");
     GameQueue->display();
     //std::cout << "\n";
 

@@ -27,19 +27,19 @@ void Human::action() {
         newY = crntY;
         switch (c = getch()) {
             case KEY_UP:
-                newY--;
+                newY-=1;
                 break;
 
             case KEY_DOWN:
-                newY++;
+                newY+=1;
                 break;
 
             case KEY_RIGHT:
-                newX++;
+                newX+=1;
                 break;
 
             case KEY_LEFT:
-                newX--;
+                newX-=1;
                 break;
         }
         endwin();
