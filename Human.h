@@ -13,6 +13,7 @@ public:
     void action() override;
     char drawYourself() override;
     Organism * getNewKid() override;
+    void walk(int x, int y);
 };
 
 

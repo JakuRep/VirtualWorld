@@ -40,7 +40,9 @@ void Fox::action() {
         }
         if(getWorld()->isInBound(tmpX, tmpY) &&
            (getWorld()->getXY(tmpX, tmpY) == nullptr ||
-            (getWorld()->getXY(tmpX, tmpY)->getStrenght() <= this->getStrenght()))) {
+            (getWorld()->getXY(tmpX, tmpY)->getStrenght() <= this->getStrenght()) ||
+             getWorld()->getXY(tmpX, tmpY)->drawYourself() == this->drawYourself())) {
+
             isFieldNotDangerous = true;
             break;
         } else {

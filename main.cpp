@@ -19,6 +19,7 @@
 #include "Fox.h"
 #include "Antelope.h"
 #include "Turtle.h"
+#include "Human.h"
 int main() {
     srand(time(NULL));
 
@@ -40,11 +41,14 @@ int main() {
             Earth.addOrganism(i, i*13%12, new Antelope(&Earth));
     }
 
-    Earth.addOrganism(11,11,new Fox(&Earth));
+    Earth.addOrganism(11,11,new Human(&Earth));
     Earth.display();
     char wait;
-    while(std::cin >> wait) {
+    int i = 0;
+    while(i < 20) {
+      Earth.display();
       Earth.makeTour();
+      i++;
     }
 
 
