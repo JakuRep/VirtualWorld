@@ -24,8 +24,8 @@ public:
     void addOrganism(int x, int y, Organism* orgPtr);
     bool moveOrganism(int oldX, int oldY, int newX, int newY);
     void killOrganism(Organism * orgPtr);
-
-
+    void readOrganism(int x, int y, Organism * orgPtr);
+    void cleanMap();
 };
 #include "Organism.h"
 

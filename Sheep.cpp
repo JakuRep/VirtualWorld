@@ -11,9 +11,11 @@ Sheep::Sheep(World * myWorld) :
 };
 
 bool Sheep::collision(Organism * orgPtr) {
+    std::cout << " owca zostala zaatakowana, staje do walki! ";
     return true;
 }
 void Sheep::action() {
+    std::cout << " Owca rozpoczyna swoja ture\n";
     move();
 };
 char Sheep::drawYourself() {

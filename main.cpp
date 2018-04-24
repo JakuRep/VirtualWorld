@@ -26,32 +26,18 @@ int main() {
     int x=0, y=0;
     World Earth = World(30,30);
     Organism * MaciejJakubowski = new Human(&Earth);
-    for(int i = 0; i < 30; i++) {
-        if(i%5 == 0)
-            Earth.addOrganism(i, i*13%30, new Wolf(&Earth));
-        else if(i%10 == 1)
-            Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
-        else if(i%10 == 2)
-            Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
-        else if(i%10 == 3)
-            Earth.addOrganism(i, i*13%30, new Wolf(&Earth));
-        else if(i%10 == 4)
-            Earth.addOrganism(i, i*13%30, new SosnowskyiHodweed(&Earth));
-        else if(i%10 == 5)
-            Earth.addOrganism(i, i*13%30, new SosnowskyiHodweed(&Earth));
-        else if(i%10 == 6)
-            Earth.addOrganism(i, i*13%30, new Antelope(&Earth));
-        else if(i%10 == 7)
-            Earth.addOrganism(i, i*13%30, new Sheep(&Earth));
-        else if(i%10 == 8)
-            Earth.addOrganism(i, i*13%30, new Antelope(&Earth));
-    }
-
-    Earth.addOrganism(11,11,MaciejJakubowski);
+    Earth.addOrganism(1,1,new Sheep(&Earth));
+    Earth.addOrganism(1,2,new Sheep(&Earth));
+    Earth.addOrganism(1,3,new Sheep(&Earth));
+    Earth.addOrganism(8,8,new Dandelion(&Earth));
+    Earth.addOrganism(3,3,new Wolf(&Earth));
+    Earth.addOrganism(3,5,new Wolf(&Earth));
+    Earth.addOrganism(3,4,new Wolf(&Earth));
+    Earth.addOrganism(6,6,MaciejJakubowski);
     Earth.display();
     char wait;
+
     while(Earth.getAtOrder(0)->drawYourself() == 'H') {
-      Earth.display();
       Earth.makeTour();
     }
 

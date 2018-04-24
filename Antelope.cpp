@@ -10,15 +10,19 @@ Antelope::Antelope(World *myWorld) :
 }
 
 bool Antelope::collision(Organism *orgPtr) {
+    std::cout << ". Antylopa proboje ucieczki ";
     if(rand() %2) {
         move();
+        std::cout << " poteznym skokiem unika walki\n";
         return false;
     } else {
+        std::cout << " ucieczka nie udana\n";
         return true;
     };
 }
 
 void Antelope::action() {
+    std::cout << "Antylopa robi hooooop\n";
     int crntX, crntY, newX, newY, direction;
     bool isInBound = false;
     World * CurrentWorld = this->getWorld();

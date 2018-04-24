@@ -11,10 +11,12 @@ SosnowskyiHodweed::SosnowskyiHodweed(World* MyWorld) :
 }
 
 bool SosnowskyiHodweed::collision(Organism *orgPtr) {
+    std::cout << "Barszcz Sosnowskiego zabija organizm swoja potworna trucizna\n";
     killOrganism(orgPtr);
     return false;
 }
 void SosnowskyiHodweed::action() {
+    std::cout << "Barszcz sosnowskiego rozpoczyna czyszcenie organizmow! \n";
     int x=getX(), y=getY();
     int xTmp, yTmp;
     Organism * orgTmp;

@@ -79,10 +79,14 @@ void Animal::move() {
 
 }
 void Animal::reproduce(Organism * orgPtr) {
+    std::cout << "proba reprodukcji organizmow typu " << this->drawYourself() << " na polach x: " << orgPtr->getX() << " y: " << orgPtr->getY();
     int x = orgPtr->getX(), y=orgPtr->getY();
     if(findFreeSpace(x,y)) {
         Organism * ptr = this->getNewKid();
+        std::cout << " udalo sie rozmnozyc\n";
         getWorld()->addOrganism(x,y,ptr);
+    } else {
+        std::cout << "nie udalo sie rozmnozyc\n";
     }
 }
 int Animal::amIStronger(Organism *orgPtr) {
@@ -94,13 +98,16 @@ int Animal::amIStronger(Organism *orgPtr) {
 
 }
 bool Animal::fight(Organism * orgPtr) {
+    std::cout << "Rozpoczecie walki " << this->drawYourself() << " z " << orgPtr->drawYourself();
     if(!orgPtr->collision(this)) {
         return false;
     } else {
         if(amIStronger(orgPtr)) {
+            std::cout << " walke wygrywa atakujacy \n";
             getWorld()->killOrganism(orgPtr);
             return true;
         } else {
+            std::cout << " atakujacy odniosl porazke  \n";
             getWorld()->killOrganism(this);
             return false;
         }

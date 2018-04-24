@@ -13,15 +13,30 @@ Human::Human(World * myWorld) :
         Animal(myWorld) {
     this->setStrenght(5);
     this->setPriority(100);
+    this->tourOfActivation = -100;
 }
-
 bool Human::collision(Organism *orgPtr) {
+    std::cout << " czlowiek zaatakwany! staje do walki ";
     return true;
 }
 void Human::action() {
+
+    std::cout << "czlowiek rozpoczyna swoja ture\n";
     int crntX = getX(), crntY = getY(), newY = crntY, newX = crntX;
     World* CurrentWorld = getWorld();
     int c;
+    int value;
+
+    if(getWorld()->getAge() - tourOfActivation < 3) {
+        if(rand()%2) {
+            value = 2;
+        } else {
+            value = 1;
+        }
+    } else {
+        value = 1;
+    }
+
 
     initscr();
     raw();
@@ -32,23 +47,46 @@ void Human::action() {
     c = getch();
         switch (c) {
             case KEY_UP:
-                newY+=1;
+                newY+=value;
                 break;
 
             case KEY_DOWN:
-                newY-=1;
+                newY-=value;
                 break;
 
             case KEY_LEFT:
-                newX-=1;
+                newX-=value;
                 break;
 
             case KEY_RIGHT:
-                newX+=1;
+                newX+=value;
+                break;
+            case 's':
+                c = getch();
+                value = 2;
+                switch (c) {
+                    case KEY_UP:
+                        newY+=value;
+                        break;
+
+                    case KEY_DOWN:
+                        newY-=value;
+                        break;
+
+                    case KEY_LEFT:
+                        newX-=value;
+                        break;
+
+                    case KEY_RIGHT:
+                        newX+=value;
+                        break;
+                }
+                activateSuperPower();
+
                 break;
             default:
-                newX+=1;
-                break;
+                newX+=value;
+                return;
         }
         refresh();
         endwin();
@@ -65,13 +103,15 @@ void Human::action() {
             }
         }
     }
+    system("clear");
 }
-
 char Human::drawYourself() {
     return 'H';
 }
-
 Organism* Human::getNewKid() {
     return nullptr;
 }
-
+void Human::activateSuperPower() {
+    if(getWorld()->getAge() - tourOfActivation > 5)
+        this->tourOfActivation = getWorld()->getAge();
+}

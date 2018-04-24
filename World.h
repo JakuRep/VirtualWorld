@@ -22,6 +22,7 @@ public:
     int getWidth();
     int getSize();
     int getAge();
+    void setAge(int age);
     Organism * getXY(int x, int y);
     bool moveOrganism(int oldX, int oldY, int newX, int newY);
     void addOrganism(int x, int y, Organism *orgPtr);
@@ -30,6 +31,8 @@ public:
     void display();
     bool isInBound(int x, int y);
     Organism *getAtOrder(int order);
+    void saveGame();
+    void readGame();
 
 
 };

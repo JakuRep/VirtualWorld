@@ -10,11 +10,11 @@ Guarana::Guarana(World *MyWorld) :
 }
 
 bool Guarana::collision(Organism *orgPtr) {
+    std::cout << " guarana skonsumowana, sila organizmu wzrasta o 3 punkty ";
     int strenght = orgPtr->getStrenght();
     orgPtr->setStrenght(strenght + 3);
     return true;
 }
-
 void Guarana::action() {
     sow();
 }

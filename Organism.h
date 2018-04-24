@@ -36,6 +36,7 @@ public:
     int getY();
     void setY(int y);
     int getAge();
+    void setAge(int age);
     World * getWorld();
     bool findFreeSpace(int &x, int &y);
     void killOrganism(Organism * orgPtr);

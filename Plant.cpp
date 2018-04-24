@@ -9,8 +9,9 @@ Plant::Plant(World * myWorld) :
 
 void Plant::sow() {
     int x = getX(),  y = getY();
+    std::cout << "proba rozsiewu organizmu typu " << this->drawYourself() << " na polu x: " << x << " y: " << y << std::endl;
     if(findFreeSpace(x,y)) {
-
+        std::cout << "udalo sie rozsiac\n";
         Organism * ptr = this->getChild();
         getWorld()->addOrganism(x,y,ptr);
     } else {

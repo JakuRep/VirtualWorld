@@ -9,6 +9,16 @@
 #include <iostream>
 #include "MapExceptions.h"
 #include "Organism.h"
+#include "Antelope.h"
+#include "Belladonna.h"
+#include "Dandelion.h"
+#include "Fox.h"
+#include "Grass.h"
+#include "Guarana.h"
+#include "Sheep.h"
+#include "SosnowskyiHodweed.h"
+#include "Turtle.h"
+#include "Wolf.h"
 
 Map::Map(int width, int height) {
     this->width = width;
@@ -98,4 +108,18 @@ void Map::killOrganism(Organism *orgPtr) {
     int x = orgPtr->getX(), y = orgPtr->getY();
     field[x][y] = nullptr;
 
+}
+void Map::readOrganism(int x, int y,Organism * orgPtr) {
+    if(isInMap(x,y)) {
+        throw outOfBoundsException();
+    } else {
+        field[x][y] = orgPtr;
+    }
+}
+void Map::cleanMap() {
+    for(int i = 0; i < height; i++) {
+        for(int j = 0; j < width; j++) {
+            field[i][j] = nullptr;
+        }
+    }
 }

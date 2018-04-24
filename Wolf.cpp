@@ -9,9 +9,11 @@ Wolf::Wolf(World * myWorld) :
     this->setStrenght(9);
 }
 bool Wolf::collision(Organism * orgPtr) {
+    std::cout << " Wilk pod atakiem!";
     return true;
 }
 void Wolf::action() {
+    std::cout << "Wilk porusza sie\n";
     move();
 }
 char Wolf::drawYourself() {

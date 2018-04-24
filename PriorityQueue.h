@@ -28,7 +28,9 @@ private:
     void cleanDeadBodies();
     void freezeCorps(Organism * orgPtr);
     void killOrganism(Organism* orgPtr);
-
+    void readOrganism(Organism* orgPtr);
+    void cleanQueue();
+    void setAge(int age);
 
 };
 #include "Organism.h"

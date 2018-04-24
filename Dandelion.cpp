@@ -17,7 +17,6 @@ void Dandelion::action() {
         sow();
     }
 }
-
 char Dandelion::drawYourself() {
     return 'm';
 }

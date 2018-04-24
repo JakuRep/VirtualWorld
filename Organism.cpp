@@ -45,6 +45,9 @@ void Organism::setY(int y) {
 int Organism::getAge() {
     return age;
 }
+void Organism::setAge(int age) {
+    this->age = age;
+}
 World * Organism::getWorld() {
     return this->MyWorld;
 }
@@ -87,6 +90,7 @@ bool Organism::findFreeSpace(int &x, int &y) {
 }
 void Organism::killOrganism(Organism *orgPtr) {
     if(orgPtr != nullptr) {
+        std::cout << "umiera: x: " << orgPtr->getX() << " y: "  << orgPtr->getY() << " " << orgPtr->drawYourself();
         MyWorld->killOrganism(orgPtr);
     } else {
         throw noOrganismOnThisPointerException();

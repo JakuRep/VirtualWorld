@@ -12,5 +12,5 @@ class unknownOrganismType: public exception {
         return "unknown organism type";
     }
 };
-bool isAnimal(char sign);
+
 #endif //VIRTUALWORLD_GLOBALFUNCTIONS_H

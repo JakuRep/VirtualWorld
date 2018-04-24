@@ -19,9 +19,10 @@ PriorityQueue::~PriorityQueue() {
     delete Queue;
 }
 void PriorityQueue::display() {
+    printf("Priorytet|Sila|Wiek|Gatunek\n");
     for(int i = 0; i < size; i++) {
         if(Queue[i] != nullptr) {
-            std::cout << Queue[i]->getPriority() << " " << Queue[i]->getAge() << " " << Queue[i]->drawYourself();
+            std::cout << Queue[i]->getPriority() << "          " << Queue[i]->getStrenght() << "     " << Queue[i]->getAge() << "    " << Queue[i]->drawYourself();
             std::cout << std::endl;
         }
     }
@@ -123,4 +124,18 @@ void PriorityQueue::killOrganism(Organism *orgPtr) {
     } else {
         throw noOrganismWithThisPriorityException();
     }
+}
+void PriorityQueue::readOrganism(Organism *orgPtr) {
+    int i = 0;
+    while(Queue[i] != nullptr)
+        i++;
+    Queue[i] = orgPtr;
+}
+void PriorityQueue::cleanQueue() {
+    for(int i = 0; i < size; i++) {
+        killOrganism(Queue[i]);
+    }
+}
+void PriorityQueue::setAge(int age) {
+    this->tour = age;
 }

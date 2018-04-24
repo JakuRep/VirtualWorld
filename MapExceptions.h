@@ -22,7 +22,11 @@ class thereIsNoLifeOnThisFieldException: public exception {
         return "You try to kill sth that doesnt live";
     }
 };
-
+class unknownOrganismTypeException: public exception {
+    const char* what() const throw() {
+        return "Unknown organism type during reading from file";
+    }
+};
 
 
 #endif //VIRTUALWORLD_MAPEXCEPTIONS_H
